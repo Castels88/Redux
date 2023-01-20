@@ -16,7 +16,8 @@ store.dispatch(newCounter.actions.increment(2));
 store.dispatch(newCounter.actions.decrement(5));
 store.dispatch(newCounter.actions.increment(10));
 store.dispatch(newUsers.actions.add({ id: 1, name: "Elio", age: 34 }));
+store.dispatch(newCounter.actions.decrement(3));
 store.dispatch(newUsers.actions.add({ id: 2, name: "mario", age: 28 }));
-store.dispatch(newUsers.actions.edit(1, { age: 7 }));
+store.dispatch(newCounter.actions.reset());
 //altra cosa tramite Immer in realta lo state puo essere
 //mutato andiamo a creare un nuovo Reducer per gli user =>NewUserState
