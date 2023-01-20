@@ -3,20 +3,20 @@ import React from "react";
 import "./Style/index.css";
 import { Root } from "./Root";
 import { store } from "./State/Store";
-import { add, edit } from "./State/UserState";
-import {
-  incrementCounter,
-  decrementCounter,
-  ResetCounter,
-} from "./State/CounterState";
-
+//importo il nuovo Reducer
+import { newCounter } from "./State/NewCounterState";
+import { newUsers } from "./State/NewUserState";
 const root = document.querySelector("#root");
 // root.render(<Root />);
 store.subscribe(() => {
   console.log(store.getState());
 });
-store.dispatch(incrementCounter(2)); //altra cosa che posso fare è assegnare il valore della action
-store.dispatch(decrementCounter(5));
-store.dispatch(ResetCounter());
-store.dispatch(add({ id: 1, name: "Elio", age: "34" }));
-store.dispatch(edit(1, { age: 18 }));
+//e vado a dichiarare il newCounter.action.la funzione della action
+store.dispatch(newCounter.actions.increment(2));
+store.dispatch(newCounter.actions.decrement(5));
+store.dispatch(newCounter.actions.increment(10));
+store.dispatch(newUsers.actions.add({ id: 1, name: "Elio", age: 34 }));
+store.dispatch(newUsers.actions.add({ id: 2, name: "mario", age: 28 }));
+store.dispatch(newUsers.actions.edit(1, { age: 7 }));
+//altra cosa tramite Immer in realta lo state puo essere
+//mutato andiamo a creare un nuovo Reducer per gli user =>NewUserState

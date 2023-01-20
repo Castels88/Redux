@@ -4,14 +4,9 @@ import { LoginForm } from "./LoginForm";
 import { Link, Route, Routes } from "react-router-dom";
 import { Catalogue } from "./Catalogue";
 import { Products } from "./Products";
-
+// in questa lezione vedremo u tool che rende l ' utilizzo diredux molto piu facile
+//andiamo all'interno del NewCounterState =>
 export function App() {
-  //in questa lezione vedremo un primo approccio a redux . come prima cosa andiamo ad installare redux con npm i redux
-  //2)adesso che lo abbiamo installato dobbiamo creare un Reducer il quale raccoglierà lo state che gli mandiamo e la conseguente azione
-  //ritornando un nuovo State .
-  //3)Come best practice andiamo a creare una cartella con tutti gli eventuali State che vogliamo passare al Reducer => State al cui
-  //interno mettere ad esempio un couter component andiamo nel componente =>
-
   return (
     <Container
       title={
