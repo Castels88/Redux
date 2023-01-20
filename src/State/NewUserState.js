@@ -1,10 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-//andiamo ad importare createSlice e creiamo
-//il nostro nuovo state .
-//per utilizzare Immer alla action add possiamo
-//invece di fare cosi add: (state, action) => [...state, action.payload],
-//possiamo direttamente mutare lo state pushando all'interno
-//quello che vogliamo in questo caso la action
+
 export const newUsers = createSlice({
   name: "users",
   initialState: [],
