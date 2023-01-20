@@ -3,7 +3,7 @@ import React from "react";
 import "./Style/index.css";
 import { Root } from "./Root";
 import { store } from "./State/Store";
-import { add } from "./State/UserState";
+import { add, edit } from "./State/UserState";
 import {
   incrementCounter,
   decrementCounter,
@@ -19,3 +19,4 @@ store.dispatch(incrementCounter(2)); //altra cosa che posso fare è assegnare il
 store.dispatch(decrementCounter(5));
 store.dispatch(ResetCounter());
 store.dispatch(add({ id: 1, name: "Elio", age: "34" }));
+store.dispatch(edit(1, { age: 18 }));
