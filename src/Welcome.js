@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import ReduxReactCounter from "./State/ReduxReactCounter";
 import { store } from "./State/Store";
+import User from "./State/User";
 export function Welcome() {
   //affinche il parametro della route venga inserito nel componente devo utilizzare UseParams
   // lo useParams ritorna un oggetto quindi nella costante dentro {}andro a mettere il mio
@@ -24,6 +26,8 @@ export function Welcome() {
             in questo caso al login form e possiamo anche aggiungerci del testo  */}
       <Link to="/login">Login to the App</Link>
       <div>
+        <ReduxReactCounter />
+        <User />
         {/* prima cosa creiamo il bottone che associeremo ad una funzione
                 seconda cosa come lo useState vado ad inserire lo useNavigate
                 terza cosa associo lo useNavigate ad una const navigate

@@ -4,43 +4,48 @@ import { LoginForm } from "./LoginForm";
 import { Link, Route, Routes } from "react-router-dom";
 import { Catalogue } from "./Catalogue";
 import { Products } from "./Products";
-//in questa lezione vedremo come gestire async function con redux
-//tramite uno strumento di redux chiamato thunk
-//cosa è un thunk ? è molto simile ad una action creator
-// che ritorna un oggetto con un type e un payload
-//quando usuamo thunk creiamo anche delle function che
-//ritornano altre function che hanno sia il dispatch method che
-// il getState method . Inoltre sono molto utili per async await function
-//andiamo a vedere come si crea , andiamo nello store=>
+import { Provider } from "react-redux";
+import { store } from "./State/Store";
+import { useEffect } from "react";
+import { fetchUser } from "./State/NewUserState";
+//in questa lezione vedremo come implementare adesso redux in react
+//come prima cosa dobbiamo installare react redux con npm
+//rimuoviamo tutti i dispatch dello store dal file index =>
+//come prima cosa dobbiamo richiamare il Provider di react redux
+//e inserire la nostra app dentro il Provider e passargli
+//lo store come props in modo che il nostro store
+//funzioni per ogni components
+//per poter selezione ogni singolo state dello store si utilizza
+//lo useSelector che prendera il singolo state che vogliamo
+//e ritornera la funzione annessa andiamo a creare un nuovo
+//componente => ReduxReactCounter
 export function App() {
+  useEffect(() => {
+    store.dispatch(fetchUser("castels88"));
+  }, []);
   return (
-    <Container
-      title={
-        <div>
-          <h1>My amazing App</h1>
-          <Link to="/">Home</Link> | <Link to="products">Products</Link>
-        </div>
-      }
-    >
-      <Routes>
-        <Route path="/:name" element={<Welcome />} />
-        <Route path="/" element={<Welcome />} />
-        <Route path="login" element={<LoginForm />} />
-        <Route path="products" element={<Catalogue />}>
-          <Route index element={<p>please select a product</p>}></Route>
-          <Route path=":id" element={<Products />}></Route>
-        </Route>
-        <Route
-          path="*"
-          element={
-            <div>
-              {" "}
-              <p>not fount Route</p>
-              <Link to="/">Go Home</Link>
-            </div>
-          }
-        />
-      </Routes>
-    </Container>
+    <Provider store={store}>
+      <div className="container">
+        <Routes>
+          <Route path="/:name" element={<Welcome />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="login" element={<LoginForm />} />
+          <Route path="products" element={<Catalogue />}>
+            <Route index element={<p>please select a product</p>}></Route>
+            <Route path=":id" element={<Products />}></Route>
+          </Route>
+          <Route
+            path="*"
+            element={
+              <div>
+                {" "}
+                <p>not fount Route</p>
+                <Link to="/">Go Home</Link>
+              </div>
+            }
+          />
+        </Routes>
+      </div>
+    </Provider>
   );
 }
