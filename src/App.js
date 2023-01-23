@@ -4,11 +4,14 @@ import { LoginForm } from "./LoginForm";
 import { Link, Route, Routes } from "react-router-dom";
 import { Catalogue } from "./Catalogue";
 import { Products } from "./Products";
-// in questa lezione vedremo cosa sono i middleWare
-//sono delle funzioni che prendono anche funzioni o delle azioni
-//che arrivano nello store e ritornano le funzion stesse o nuove azioni
-//i middleWare servono a modificare, cancellare e replace action che
-//vengono mandate allo store creaimo un middleWare nella cartella State=>
+//in questa lezione vedremo come gestire async function con redux
+//tramite uno strumento di redux chiamato thunk
+//cosa è un thunk ? è molto simile ad una action creator
+// che ritorna un oggetto con un type e un payload
+//quando usuamo thunk creiamo anche delle function che
+//ritornano altre function che hanno sia il dispatch method che
+// il getState method . Inoltre sono molto utili per async await function
+//andiamo a vedere come si crea , andiamo nello store=>
 export function App() {
   return (
     <Container

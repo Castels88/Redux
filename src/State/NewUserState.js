@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { errorState } from "./ErrorState";
+import { loadingState } from "./LoadingState";
 
 export const newUsers = createSlice({
   name: "users",
@@ -19,3 +21,23 @@ export const newUsers = createSlice({
     clear: [],
   },
 });
+//andiamo a creare la nostra fetch user
+export function fetchUser(username) {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(loadingState.actions.start());
+      const res = await fetch(`http://api.github.com/users/${username}`);
+      const json = await res.json();
+      //adesso che abbiamo i nostri dati dobbiamo
+      //inserirli nello newUser Reduce
+      //dobbiamo richiamare il dispatch method e passargli le action
+      //del newUsers
+      dispatch(newUsers.actions.add(json));
+    } catch (error) {
+      dispatch(errorState.actions.add(error));
+    } finally {
+      dispatch(loadingState.actions.end());
+    }
+  };
+}
+//adesso andiamo nell index.js =>

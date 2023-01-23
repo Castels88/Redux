@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { store } from "./State/Store";
 export function Welcome() {
   //affinche il parametro della route venga inserito nel componente devo utilizzare UseParams
   // lo useParams ritorna un oggetto quindi nella costante dentro {}andro a mettere il mio
